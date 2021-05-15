@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap'
 import Header from './components/header/Header'
 import Sidebar from "./components/sidebar/Sidebar"
 import HomeScreen from "./screens/homeScreen/HomeScreen"
+import LoginScreen from './screens/loginScreen/LoginScreen'
 
 import "./_app.scss";
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
 
     return (
         <>
-          <Header handleToggleSidebar={handleToggleSidebar}/>  
+          {/* <Header handleToggleSidebar={handleToggleSidebar}/>  
           <div className="app__container">
               <Sidebar 
                 sidebar={sidebar} 
@@ -25,6 +26,9 @@ const App = () => {
                   <HomeScreen />
               </Container>
           </div>
+           */}
+
+           <LoginScreen />
         </>
     )
 }
