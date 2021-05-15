@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
@@ -10,11 +9,9 @@ import LoginScreen from './screens/loginScreen/LoginScreen'
 
 import "./_app.scss";
 
-
 const Layout = ({ children }) => {
 
     const [sidebar, toggleSidebar] = useState(false);
-
     const handleToggleSidebar = () => toggleSidebar(value => !value);
 
     return (
