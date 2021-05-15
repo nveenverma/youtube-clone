@@ -85,6 +85,10 @@
 
         &__menu {
             display: block;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         &__logo {
