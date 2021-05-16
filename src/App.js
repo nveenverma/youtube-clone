@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 
 import Header from './components/header/Header'
 import Sidebar from "./components/sidebar/Sidebar"
@@ -33,26 +33,24 @@ const Layout = ({ children }) => {
 const App = () => {
 
     return (
-        <Router>
-            <Switch>
-                <Route path='/auth'>
-                    <LoginScreen />
-                </Route>
-                <Route path='/search'>
-                    <Layout>
-                        <h1>Search Results</h1>
-                    </Layout>
-                </Route>
-                <Route path='/'>
-                    <Layout>
-                        <HomeScreen />
-                    </Layout>
-                </Route>
-                <Route>
-                    <Redirect to='/' />
-                </Route>
-            </Switch>
-        </Router>
+        <Switch>
+            <Route path='/auth'>
+                <LoginScreen />
+            </Route>
+            <Route path='/search'>
+                <Layout>
+                    <h1>Search Results</h1>
+                </Layout>
+            </Route>
+            <Route path='/'>
+                <Layout>
+                    <HomeScreen />
+                </Layout>
+            </Route>
+            <Route>
+                <Redirect to='/' />
+            </Route>
+        </Switch>    
     )
 }
 
