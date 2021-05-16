@@ -2,7 +2,8 @@ import {
     LOAD_PROFILE, 
     LOGIN_FAILED, 
     LOGIN_REQUEST, 
-    LOGIN_SUCCESS 
+    LOGIN_SUCCESS, 
+    LOG_OUT
 } from "../actionType"
 
 // Following stores the state before action gets dispotched to the reducer
@@ -24,19 +25,22 @@ export const authReducer = (prevState = initialState, action) => {
 
     // Conditionally run the code based on the type of action
     switch(type) {
+
+        // Requesting User Login
         case LOGIN_REQUEST:
             return {
                 ...prevState,
                 loading: true
             }
 
+        // User Login Successful
         case LOGIN_SUCCESS:
             return {
                 ...prevState,
                 accessToken: payload,
                 loading: false
             }
-
+        // User Login Failed
         case LOGIN_FAILED:
             return {
                 ...prevState,
@@ -44,11 +48,21 @@ export const authReducer = (prevState = initialState, action) => {
                 loading: false,
                 error: payload
             }
+
+        // Loading User Profile
         case LOAD_PROFILE:
             return {
                 ...prevState,
                 user: payload
-            }            
+            }       
+        
+        // Logging out the User
+        case LOG_OUT: 
+            return {
+                ...prevState,
+                accessToken: null,
+                user : null,                
+            }
     
         default:
             return prevState

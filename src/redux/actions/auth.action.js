@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import auth from '../../firebase'
-import { LOAD_PROFILE, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS } from '../actionType';
+import { LOAD_PROFILE, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT } from '../actionType';
 
 // Following Action Creator function is exported and it  dispatches 
 // several smaller actions to the reducer, with appropriate type and payload
@@ -49,4 +49,18 @@ export const login = () => async dispatch => {
         })
     }
 
+}
+
+// Following Action Creator function is exported and it  dispatches 
+// LOG_OUT action to the reducer, and clears the local storage
+// while logging out the user
+export const logout = () => async dispatch => {
+    
+    await auth.signOut();
+    dispatch({
+        type: LOG_OUT
+    })
+
+    localStorage.removeItem('ytc-access-token');
+    localStorage.removeItem('ytc-user');
 }
