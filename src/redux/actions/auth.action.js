@@ -25,6 +25,11 @@ export const login = () => async dispatch => {
             photoURL: res.additionalUserInfo.profile.picture,
         }
 
+        // Persist user data in local storage to prevent user from logging out
+        // when window is closed or reloaded
+        localStorage.setItem('ytc-access-token', accessToken);
+        localStorage.setItem('ytc-user', JSON.stringify(profile));
+
         // Action to inform login is successful and send the access token
         dispatch({
             type: LOGIN_SUCCESS,

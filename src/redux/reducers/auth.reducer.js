@@ -7,8 +7,12 @@ import {
 
 // Following stores the state before action gets dispotched to the reducer
 const initialState = {
-    accessToken: null,
-    user: null,
+    accessToken: localStorage.getItem('ytc-access-token') 
+        ? localStorage.getItem('ytc-access-token') 
+        : null,
+    user : localStorage.getItem('ytc-user') 
+        ? JSON.parse(localStorage.getItem('ytc-user')) 
+        : null,
     loading: false
 }
 
