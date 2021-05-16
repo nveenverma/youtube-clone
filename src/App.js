@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import { Route, Switch, Redirect } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 
 import Header from './components/header/Header'
 import Sidebar from "./components/sidebar/Sidebar"
@@ -31,6 +32,18 @@ const Layout = ({ children }) => {
 }
 
 const App = () => {
+
+    // Accessing accessToken and loading state from auth in Central Store
+    const {accessToken, loading} = useSelector(state => state.auth);
+
+    // Create history variable via useHistory Hook
+    const history = useHistory();
+    
+    useEffect(() => {
+        if (!loading && !accessToken) {
+            history.push('/auth')
+        }
+    }, [accessToken, loading, history])
 
     return (
         <Switch>
